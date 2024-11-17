@@ -1,0 +1,19 @@
+meta {
+  name: nova-divida
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/v1/dividas
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "valor" : 1000,
+    "tipoDivida" : "PARCELA_UNICA",
+    "numParcelas" : 5
+  }
+}
