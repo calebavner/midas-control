@@ -1,5 +1,6 @@
 package app.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,12 @@ public class DividaParcelada implements Divida {
 
         for(long i = 0; i < numParcelas; i++) {
             Parcela p = setParcela(valorParcela);
-            p.setVencimento(p.getVencimento().plusMonths(i));
+
+            p.setVencimento(p.getVencimento()
+                    .plusMonths(i)
+                    .minusDays(LocalDate.now()
+                            .getDayOfMonth() - 1));
+
             parcelas.add(p);
         }
 
